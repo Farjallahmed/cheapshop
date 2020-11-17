@@ -12,10 +12,8 @@
     "express": "^4.17.1",
     "mongodb": "^3.6.3",
     "nodemon": "^2.0.6"
-
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Farjallahmed/cheapshop.git"

@@ -9,14 +9,12 @@ const url = `mongodb://localhost:${port}/cheapshop`;
       throw dotenv.error;
     }
 
-
     app.use(express.json());
     // app.use();
     app.get("/", (req, res) => {
-      res.end("Hi tanguy are u okay");
+      res.end("Hi tanguy are u okay !! ça va gros ?");
     });
   
-
     app.listen(port, () => {
       console.log("Application work fine");
     });
