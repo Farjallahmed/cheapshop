@@ -7,7 +7,7 @@ if (dotenv.error) {
 }
 
 app.get("/", (req, res) => {
-  res.end("It's working");
+  res.end("Hi tanguy are u okay");
 });
 
 app.listen(port, () => {
