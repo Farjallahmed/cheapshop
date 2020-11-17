@@ -16,11 +16,6 @@ export class Start {
   }
 
   InitDB() {
-    // MongoClient.connect(url, (_err: any, db: any) => {
-    //   console.log("connected");
-    //   var cursor = db.collection("Employee").find();
-    //   console.log(cursor);
-    // });
   }
 
   InitServer() {
