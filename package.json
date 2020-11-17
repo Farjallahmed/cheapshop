@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn  index.ts",
+    "start": "nodemon --exec ts-node index.ts",
+    "postinstall": "tsc",
     "build": "tsc"
   },
   "dependencies": {
