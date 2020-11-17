@@ -16,6 +16,7 @@ export class Start {
   }
 
   InitDB() {
+      console.log("Init db success")
   }
 
   InitServer() {
