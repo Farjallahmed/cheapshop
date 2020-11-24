@@ -27,12 +27,13 @@ class Server {
     app.use(bodyParser.json({}));
     routerConfig.load(app,'./api');
     app.all("*", (req, res) => {
-      res.end("Router is missing ?");
+      res.end("You have to check wich api you ant to use");
     });
   }
 
   LunchServer() {
     app.listen(port, () => {
+      console.log("Used Port : ", port)
       console.log("Server Started...");
     });
   }
