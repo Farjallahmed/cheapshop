@@ -2,21 +2,40 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
-const MongoClient = require("mongodb").MongoClient;
-const url = `mongodb://localhost:${port}/cheapshop`;
+const bodyParser = require("body-parser");
+const MongoDbLoarder = require("./loaders/initMongo");
+const routerConfig = require("./router/router");
 
+class Server {
+  
+  constructor() {
     if (dotenv.error) {
       throw dotenv.error;
     }
+    this.InitDB();
+    this.InitServer();
+    this.LunchServer();
+  }
 
+  InitDB(){
+    MongoDbLoarder.connectToServer((err,db)=>{})
+  }
+
+  InitServer() {
     app.use(express.json());
-    // app.use();
-    app.get("/", (req, res) => {
-      res.end("Hi tanguy are u okay !! ça va gros ?");
+    app.use(bodyParser.urlencoded({extended:false}));
+    app.use(bodyParser.json({}));
+    routerConfig.load(app,'./api');
+    app.all("*", (req, res) => {
+      res.end("Router is missing ?");
     });
-  
-    app.listen(port, () => {
-      console.log("Application work fine");
-    });
-  
+  }
 
+  LunchServer() {
+    app.listen(port, () => {
+      console.log("Server Started...");
+    });
+  }
+
+}
+module.exports = new Server();
