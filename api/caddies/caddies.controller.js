@@ -47,6 +47,7 @@ class Caddy {
       },
       (err) => {
         if (err) return res.json(err);
+        console.log("ERROR : ",err);
         return res.status(200).json({ message: "success" });
       }
     );
