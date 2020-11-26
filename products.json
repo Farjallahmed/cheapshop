@@ -1,0 +1,113 @@
+[
+    {
+        "name":"Tomates allongées",
+        "img":"T1",
+        "price":"2,99",
+        "weight":"1 kg",
+        "categorie":"tomates"
+    },
+    {
+        "name":"Tomates cerises rondes bio",
+        "img":"T2",
+        "price":"1,5",
+        "weight":"400 g",
+        "categorie":"tomates"
+    },
+    {
+        "name":"Tomates allongées coeur",
+        "img":"T3",
+        "price":"3,99",
+        "weight":"1 kg",
+        "categorie":"tomates"
+    },
+    {
+        "name":"Comté 18 mois AOP",
+        "img":"F1",
+        "price":"3,99",
+        "weight":"230 g",
+        "categorie":"fromage"
+    },
+    {
+        "name":"Comté AOP CARREFOUR",
+        "img":"F2",
+        "price":"2,92",
+        "weight":"250 g",
+        "categorie":"fromage"
+    },
+    {
+        "name":"Emmental français CARREFOUR CLASSIC'",
+        "img":"F3",
+        "price":"1,92",
+        "weight":"250 g",
+        "categorie":"fromage"
+    },
+    {
+        "name":"Pâtes callezione Trofie BARILLA",
+        "img":"P1",
+        "price":"1,12",
+        "weight":"500 g",
+        "categorie":"pates"
+    },
+    {
+        "name":"Pâtes interale Pennette Rigate au blé complet BARILLA",
+        "img":"P2",
+        "price":"1,21",
+        "weight":"500 g",
+        "categorie":"pates"
+    },
+    {
+        "name":"Pâtes callezione fusili bucati corti BARILLA",
+        "img":"P3",
+        "price":"1,31",
+        "weight":"500 g",
+        "categorie":"pates"
+    },
+    {
+        "name":"Lait Demi-Ecreme Avec Vitamine D LACTEL",
+        "img":"L1",
+        "unit_price":"0,82",
+        "price":"4,92",
+        "weight":"pack de 6 bouteilles d'1L",
+        "categorie":"lait"
+    },
+    {
+        "name":"Lait Demi-Ecreme Stérilisé UHT de Montagne",
+        "img":"L2",
+        "unit_price":"0,90",
+        "price":"5,40",
+        "weight":"pack de 6 bouteilles d'1L",
+        "categorie":"lait"
+    },
+    {
+        "name":"Lait Ecreme Stérilisé UHT de Montagne",
+        "img":"L3",
+        "unit_price":"0,77",
+        "price":"4,62",
+        "weight":"pack de 6 bouteilles d'1L",
+        "categorie":"lait"
+    },
+    {
+        "name":"Eau de source CRISTALINE",
+        "img":"E1",
+        "unit_price":"0,11",
+        "price":"0,96",
+        "weight":"pack de 6 bouteilles d'1,5L",
+        "categorie":"eaux"
+    },
+    {
+        "name":"Eau minérale naturelle MONT ROUCOUS",
+        "img":"E2",
+        "unit_price":"0,44",
+        "price":"2.64",
+        "weight":"pack de 6 bouteilles d'1L",
+        "categorie":"eaux"
+    },
+    {
+        "name":"Eau de source CARREFOUR",
+        "img":"E3",
+        "unit_price":"0,17",
+        "price":"1.50",
+        "weight":"pack de 6 bouteilles d'1,5L",
+        "categorie":"eaux"
+    }
+]
