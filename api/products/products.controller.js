@@ -29,9 +29,9 @@ class Products {
             as: "product",
           },
         },
-        { $match: { name: { $ne: req.body.product } } },
-        { $limit: 1 },
         { $unwind: "$product" },
+        { $match: { "product.name": { $ne: req.body.product } } },
+        { $limit: 1 },
       ])
       .next((err, result) => {
         if (err) return res.status(400).json({ message: err });
