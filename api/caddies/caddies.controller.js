@@ -3,7 +3,7 @@ const moment = require("moment");
 
 class Caddy {
   constructor(router) {
-    router.post("/", this.Add);
+    // router.post("/", this.Add);
     router.post("/:caddy/product", this.AddProduct);
     router.put("/:caddy/product", this.RemoveProduct);
     router.get("/:user", this.List);
