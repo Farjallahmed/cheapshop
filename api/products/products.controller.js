@@ -34,8 +34,8 @@ class Products {
         { $unwind: "$product" },
       ])
       .next((err, result) => {
-        console.log("Error : ", err);
-        console.log("Result : ", result);
+        if (err) return res.status(400).json({ message: err });
+        return res.status(200).json(result.product);
       });
   }
   Alternate(req, res) {}
