@@ -1,7 +1,7 @@
 class PassportJs {
 
   constructor(router) {
-    // router.post("/", this.ValidateToken.bind(this));
+    router.post("/", this.ValidateToken.bind(this));
   }
 
   ValidateToken(req, res) {
