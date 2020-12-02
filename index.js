@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const app = express();
+const morgan = require("morgan");
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 const MongoDbLoarder = require("./loaders/initMongo");
@@ -22,13 +23,15 @@ class Server {
   }
 
   InitServer() {
+    app.use(morgan("dev"));
     app.use(express.json());
     app.use(bodyParser.urlencoded({extended:false}));
     app.use(bodyParser.json({}));
     routerConfig.load(app,'./api');
-    app.all("*", (req, res) => {
+    app.all("/*", (req, res) => {
       res.end("You have to check wich api you ant to use");
     });
+   
   }
 
   LunchServer() {

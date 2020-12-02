@@ -3,15 +3,14 @@ const ObjectId = require("mongodb").ObjectId;
 
 class Products {
   constructor(router) {
-    router.post("/", this.replace);
-    router.post("/:caddy", this.Add);
+    router.post("/alternative", this.Alternative.bind(this));
+    router.post("/:caddy", this.Replace.bind(this));
+    // router.post("/:caddy", this.Add.bind(this));
   }
 
   Add(req, res) {}
 
-  replace(req, res) {
-    console.log("***  Replace  ***");
-    console.log(req.body);
+  Alternative(req, res) {
     if (!req.body.product || typeof req.body.product !== "string")
       return res.status(400).json({ message: "Invalid product" });
     if (!req.body.category || typeof req.body.category !== "string")
@@ -38,6 +37,9 @@ class Products {
         return res.status(200).json(result.product);
       });
   }
-  Alternate(req, res) {}
+  
+  Replace(req, res) {
+
+  }
 }
 module.exports = Products;

@@ -3,12 +3,12 @@ const moment = require("moment");
 
 class Caddy {
   constructor(router) {
-    // router.post("/", this.Add);
-    router.post("/:caddy/product", this.AddProduct);
-    router.put("/:caddy/product", this.RemoveProduct);
-    router.get("/:user", this.List);
-    router.put("/:caddy", this.Update);
-    router.delete("/:caddy", this.Delete);
+    router.post("/", this.Add);
+    router.post("/:caddy/product", this.AddProduct.bind(this));
+    router.put("/:caddy/product", this.RemoveProduct.bind(this));
+    router.get("/:user", this.List.bind(this));
+    router.put("/:caddy", this.Update.bind(this));
+    router.delete("/:caddy", this.Delete.bind(this));
   }
 
   List(req, res) {
@@ -32,6 +32,7 @@ class Caddy {
   }
 
   Add(req, res) {
+
     if (!req.body.user) {
       return res.status(400).json({ message: "Id user invalid" });
     }
