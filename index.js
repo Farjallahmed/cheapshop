@@ -27,6 +27,7 @@ class Server {
     app.use(express.json());
     app.use(bodyParser.urlencoded({extended:false}));
     app.use(bodyParser.json({}));
+    app.use("/assets", express.static("./assets"));
     routerConfig.load(app,'./api');
     app.all("/*", (req, res) => {
       res.end("You have to check wich api you ant to use");
