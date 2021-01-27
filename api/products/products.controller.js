@@ -10,7 +10,9 @@ class Products {
   }
 
   
-  Add(req, res) {}
+  Add(req, res) {
+    
+  }
 
   getAlternative(req, res) {
     if (!req.body.product || typeof req.body.product !== "string")
@@ -59,6 +61,6 @@ class Products {
       });
   }
 
-  
+
 }
 module.exports = Products;

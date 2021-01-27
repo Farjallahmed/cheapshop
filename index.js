@@ -19,7 +19,7 @@ class Server {
   }
 
   InitDB(){
-    MongoDbLoarder.connectToServer((err,db)=>{console.log(err),console.log(db)})
+    MongoDbLoarder.connectToServer((err,db)=>{})
   }
 
   InitServer() {

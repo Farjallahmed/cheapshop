@@ -6,6 +6,7 @@ class Caddy {
     router.post("/", this.Add);
     router.post("/:caddy/product", this.AddProduct.bind(this));
     router.put("/:caddy/product", this.RemoveProduct.bind(this));
+    router.get("/:caddy/product", this.ListProduit.bind(this));
     router.get("/:user", this.List.bind(this));
     router.put("/:caddy", this.Update.bind(this));
     router.delete("/:caddy", this.Delete.bind(this));
@@ -20,26 +21,56 @@ class Caddy {
       .collection("caddies")
       .aggregate([
         { $match: { user: ObjectId(req.params.user) } },
+        // { $unwind: "$products" },
+        {
+          $lookup: {
+            from: "products",
+            localField: "products",
+            foreignField: "_id",
+            as: "result",
+          },
+        },
         { $skip: (req.body.page - 1) * 5 },
         { $limit: 5 },
         { $sort: { createdAt: -1 } },
       ])
       .toArray((err, caddies) => {
-        console.log(err);
         if (err) return res.json(err);
         return res.status(200).json(caddies);
       });
   }
+  async ListProduit(req, res) {
+    if (!req.params.caddy)
+      return res.status(400).json({ message: "Caddy invalide" });
+    global._db
+      .collection("caddies")
+      .aggregate([{ $match: { _id: ObjectId(req.params.caddy) } }])
+      .toArray((err, caddies) => {
+        let result = [];
+        caddies.forEach(async (caddy) => {
+          caddy.products.forEach((el) => {
+            global._db
+              .collection("products")
+              .findOne({ _id: ObjectId(el) }, (err, product) => {
+                console.log("Prod :", product);
+                result.push(product);
+              });
+          });
+        });
+        setTimeout(function () {
+          console.log("Res : ", result);
+          return res.json(result);
+        }, 3000);
+      });
+  }
 
   Add(req, res) {
-
     if (!req.body.user) {
       return res.status(400).json({ message: "Id user invalid" });
     }
     if (!req.body.name || typeof req.body.name !== "string") {
       return res.status(400).json({ message: "name invalid" });
     }
-
     global._db.collection("caddies").insertOne(
       {
         user: ObjectId(req.body.user),
@@ -48,7 +79,6 @@ class Caddy {
       },
       (err) => {
         if (err) return res.json(err);
-        console.log("ERROR : ",err);
         return res.status(200).json({ message: "success" });
       }
     );
@@ -104,7 +134,6 @@ class Caddy {
       return res.status(400).json({ message: "Product is invalid" });
     if (!req.params.caddy)
       return res.status(400).json({ message: "Caddy is invalid" });
-
     global._db
       .collection("caddies")
       .updateOne(
@@ -133,7 +162,9 @@ class Caddy {
         (err, isUpdated) => {
           if (err) return res.json(err);
           if (isUpdated.result.nModified !== 1)
-            return res.status(400).json({ message: "Produit est supprimé ou n'existe pas" });
+            return res
+              .status(400)
+              .json({ message: "Produit est supprimé ou n'existe pas" });
           else return res.status(200).json({ message: "success" });
         }
       );
